@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mk体育 – 一站式体育数据与赛事管理面板</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #1e1e1e;
+      line-height: 1.7;
+      padding: 3rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    /* 标题层级 */
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #111;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: #222;
+      margin: 3rem 0 1rem 0;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #2a2a2a;
+      margin: 1.5rem 0 0.5rem 0;
+    }
+
+    p {
+      margin-bottom: 1.2rem;
+    }
+
+    a {
+      color: #1a5c9e;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    a:hover {
+      border-bottom-color: #1a5c9e;
+    }
+
+    .hero-sub {
+      font-size: 1rem;
+      color: #5c5c5c;
+      margin-top: 0.1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* 特点列表：极简卡片风格 */
+    .feature-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin: 2rem 0 1.8rem 0;
+    }
+
+    .feature-item {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      border-left: 3px solid #d4dde8;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .feature-item:hover {
+      border-left-color: #1a5c9e;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .feature-item strong {
+      display: block;
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 0.2rem;
+      color: #121212;
+    }
+
+    .feature-item span {
+      color: #4a4a4a;
+    }
+
+    /* 引用/提示块 */
+    .insight-box {
+      background: #f2f4f8;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      font-size: 0.95rem;
+      color: #2d2d2d;
+      border: 1px solid #e5e8ec;
+    }
+
+    .insight-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FAQ 摘要 */
+    .faq-mini {
+      margin: 2.5rem 0 1.5rem 0;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid #ececec;
+      padding-bottom: 0.6rem;
+    }
+
+    .faq-mini summary {
+      font-weight: 500;
+      color: #1a1a1a;
+      cursor: pointer;
+      padding: 0.3rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .faq-mini summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-mini summary::before {
+      content: "▸";
+      margin-right: 0.6rem;
+      color: #6f7f8f;
+      transition: transform 0.2s;
+    }
+
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-mini details p {
+      margin: 0.5rem 0 0.8rem 0.2rem;
+      color: #3b3b3b;
+      font-size: 0.92rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e6e6e6;
+      margin: 2.8rem 0 1.5rem 0;
+    }
+
+    .footer-note {
+      font-size: 0.85rem;
+      color: #7a7a7a;
+      text-align: center;
+      margin-top: 3rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 540px) {
+      body {
+        padding: 2rem 1rem;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      .feature-item {
+        padding: 1rem 1.2rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- 开场短句 -->
+    <h1>mk体育 · 面板式管理门户</h1>
+    <p class="hero-sub">为运营者、数据分析师与赛事从业者整合核心操控界面。</p>
+
+    <!-- 承接段落：快速识别用途 -->
+    <p>
+      当一个体育管理后台的入口需要被快速定位，用户首先希望判断它是否涵盖自己所需的模块：赛事配置、实时数据接入、用户权限、内容发布。 
+      <a href="https://panel-portal-mksport.com">mk体育</a> 正是以这样一套聚合面板的形态出现，它不扮演信息门户或资讯站，而是提供一套面向后台操作的统一着陆点。
+    </p>
+
+    <p>
+      从域名结构可以直观看出其定位——panel-portal 指向控制台与仪表盘集合。无论你负责赛事编排、赔率监控，还是管理多端内容分发，这里都能成为日常操作的第一站。
+    </p>
+
+    <!-- 特点列表 -->
+    <h2>核心板块速览</h2>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <strong>赛事配置中心</strong>
+        <span>联赛、杯赛、即时对战 — 支持赛程创建、状态变更与结果录入，结构按运动项目分类。</span>
+      </div>
+      <div class="feature-item">
+        <strong>实时数据看板</strong>
+        <span>集成本地与第三方数据源，以卡片和折线图呈现关键指标变化，延迟控制在秒级。</span>
+      </div>
+      <div class="feature-item">
+        <strong>账号与权限体系</strong>
+        <span>细粒度角色管理，支持多级操作日志审计，适合团队协作与外部供应商接入。</span>
+      </div>
+      <div class="feature-item">
+        <strong>内容发布工具</strong>
+        <span>公告、规则更新、赛事前瞻——可视化编辑器配合定时推送，减少跨系统切换成本。</span>
+      </div>
+    </div>
+
+    <!-- 温和场景提示 -->
+    <h2>典型使用情境</h2>
+    <p>
+      一位体育数据供应商的技术对接人，首次登录后首先确认数据推送端点与回调地址的配置位置；一位赛事运营专员则更关注比赛状态的批量更新与异常提醒。 
+      <a href="https://panel-portal-mksport.com">mk体育</a> 的面板布局将高频操作置于左侧导航，二级页面以独立工作区呈现，减少页面跳转带来的认知负担。
+    </p>
+    <p>
+      如果你需要快速检索某个联赛的当前阶段，或查看最近一小时的赔率波动，顶部搜索栏与筛选器能够直接定位到具体赛事卡片，无需层层点开菜单。
+    </p>
+
+    <!-- 信息密度稍高的 insight 块 -->
+    <div class="insight-box">
+      <p><strong>关于面板定位：</strong> 本平台不直接面向终端用户提供投注或直播服务，而是作为管理后台存在。所有操作均需通过授权账户登录。如果你拥有运营或维护权限，建议首次使用时完整浏览「系统概览」页面，以了解各功能区边界。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <h2>常见疑问摘要</h2>
+    <div class="faq-mini">
+      <details>
+        <summary>我能否通过这个页面直接开始使用？</summary>
+        <p>当前页面为介绍与导航入口。实际使用需要向你的机构申请登录凭证，获得账号后即可通过 <a href="https://panel-portal-mksport.com">mk体育</a> 进入控制台。</p>
+      </details>
+      <details>
+        <summary>面板支持哪些体育项目？</summary>
+        <p>覆盖足球、篮球、网球、电竞等主流项目，以及部分区域联赛。具体项目列表可在登录后的“运动分类”模块查看。</p>
+      </details>
+      <details>
+        <summary>数据刷新频率是多少？</summary>
+        <p>实时数据模块通常为 1–3 秒同步一次，历史统计与报表每日更新。延迟可能受网络与数据源影响。</p>
+      </details>
+    </div>
+
+    <hr>
+
+    <!-- 温和结尾 -->
+    <p style="text-align: center; font-size: 0.95rem; color: #4a4a4a;">
+      从识别用途到进入工作流——<a href="https://panel-portal-mksport.com">mk体育</a> 面板致力于将复杂配置收敛为清晰界面。
+    </p>
+
+    <div class="footer-note">
+      本页仅作功能概述与入口指引，具体操作请参阅对应文档。
+    </div>
+
+  </div>
+</body>
+</html>
